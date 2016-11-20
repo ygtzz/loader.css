@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .spinner{
+            width:80px;
+            height:80px;
+            background-color:green;
+            border-radius:50%;
+            animation:bouncehide 1.2s infinite ease-in-out;
+        }
+        @keyframes bouncehide{
+            0%{transform: scale(0); opacity:0.5}
+            100%{transform: scale(1); opacity:0}
+        }
+    </style>
+</head>
+<body>
+    <div class="spinner"></div>
+</body>
+</html>

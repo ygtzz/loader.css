@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        
+        .spinner > div{
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: green;
+            opacity: 0.6;
+            position: absolute;
+        }
+        .double-bounce1{
+            animation: bounce 2s infinite ease-in-out;
+        }
+        .double-bounce2{
+            animation: bounce 2s infinite ease-in-out;
+            animation-delay: -1s;
+        }
+        @keyframes bounce{
+            0%,100%{
+                transform: scale(0)
+            }
+            50%{
+                transform: scale(1)
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="spinner">
+        <div class="double-bounce1"></div>
+        <div class="double-bounce2"></div>
+    </div>
+</body>
+</html>

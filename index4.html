@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .spinner{
+           width:32px;
+           position:relative;
+        }
+        .spinner > div{
+            width:30px;
+            height:30px;
+            background-color:green;
+            opacity:0.6;
+            position: absolute;
+            animation: cubemove 2s infinite ease-in-out
+        }
+        .spinner .cube1{
+            left:0;
+            top:0;
+        }
+        .spinner .cube2{
+            left:0;
+            top:0;
+            animation-delay: -1s;
+        }
+        @keyframes cubemove{
+            25%{
+                transform: translate(40px,0) rotate(-90deg) scale(.3)
+            }
+            50%{
+                transform: translate(40px,40px) rotate(-180deg) scale(1)
+            }
+            75%{
+                transform: translate(0,40px) rotate(-270deg) scale(.3)
+            }
+            100%{
+                transform: rotate(-360deg)
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="spinner">
+        <div class="cube1"></div>
+        <div class="cube2"></div>
+    </div>
+</body>
+</html>
