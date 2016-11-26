@@ -16,10 +16,11 @@
         #cricle .right,
         #cricle .text {
             width: 200px;
-            height: 200px
+            height: 200px;
+            position: absolute;
         }
         #cricle .text {
-            position: absolute;
+            /*position: absolute;*/
             top: 0;
             left: 0;
             z-index: 41;
@@ -68,13 +69,34 @@
             background-position: right top;
             right: 0
         }
+        .turn-1{
+            animation: rotate1 3s 1 linear;
+            animation-fill-mode:forwards;
+        }
+        .turn-2{
+            animation: rotate2 3s 1 linear;
+            animation-fill-mode:forwards;
+        }
+        @keyframes rotate1{
+            100%{
+                transform: rotate(.5turn)
+            }
+        }
+        @keyframes rotate2{
+            0%{
+                transform: rotate(.5turn)
+            }
+            100%{
+                transform: rotate(1turn)
+            }
+        }
     </style>
     <script src="http://cdn.bootcss.com/jquery/1.8.2/jquery.min.js"></script>
 </head>
 <body>
     <div id="cricle">
         <div class="mask"></div>
-        <div class="left">
+        <div class="left turn-1">
             <div class="bg"></div>
         </div>
         <div class="right">
@@ -83,6 +105,13 @@
         <div class="text"></div>
     </div>
     <script type="text/javascript">
+        // $(function(){
+        //     $('.left').on('animationend',function(){
+        //         $(this).removeClass('turn-1').addClass('turn-2');
+        //         $('.right').show();
+        //         $('.mask').hide();
+        //     });
+        // });
         var C = function(id) {
             this.box = $("#" + id);
             this.left = this.box.find(".left");
