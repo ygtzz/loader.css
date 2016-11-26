@@ -12,6 +12,7 @@
             background: #333;
             overflow: hidden
         }
+        
         #cricle .left,
         #cricle .right,
         #cricle .text {
@@ -19,6 +20,7 @@
             height: 200px;
             position: absolute;
         }
+        
         #cricle .text {
             /*position: absolute;*/
             top: 0;
@@ -28,9 +30,11 @@
             font: 26px/200px 'arial';
             text-align: center
         }
+        
         #cricle .mask {
             z-index: 40
         }
+        
         #cricle .mask,
         #cricle .bg {
             width: 100px;
@@ -40,66 +44,133 @@
             top: 0;
             overflow: hidden;
         }
+        
         .bg:after {
             content: '';
             position: absolute;
             width: 120px;
             height: 120px;
-            top:30px;
+            top: 30px;
             border: 10px solid limegreen;
             border-radius: 50%;
         }
+        
         .left .bg:after {
-            left:30px;
+            left: 30px;
         }
+        
         .right .bg:after {
-            right:30px;
+            right: 30px;
         }
+        
         #cricle .bg {
             /*background: url(./imgs/bg_green.png) no-repeat 0 0*/
         }
+        
         #cricle .mask,
         #cricle .left .bg {
             left: 0
         }
+        
         #cricle .right {
             display: none
         }
+        
         #cricle .right .bg {
             background-position: right top;
             right: 0
         }
-        .turn-1{
+        
+        .turn-1 {
             animation: rotate1 3s 1 linear;
-            animation-fill-mode:forwards;
+            animation-fill-mode: forwards;
         }
-        .turn-2{
+        
+        .turn-2 {
             animation: rotate2 3s 1 linear;
-            animation-fill-mode:forwards;
+            animation-fill-mode: forwards;
         }
-        @keyframes rotate1{
-            100%{
+        
+        @keyframes rotate1 {
+            100% {
                 transform: rotate(.5turn)
             }
         }
-        @keyframes rotate2{
-            0%{
+        @keyframes rotate2 {
+            0% {
                 transform: rotate(.5turn)
             }
-            100%{
+            100% {
                 transform: rotate(1turn)
             }
         }
+        .marks li {
+            display: block;
+            width: .1em;
+            height: .6em;
+            background-color:#929394;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin: -.4em 0 0 -.1em;
+            z-index: 9999;
+        }
+        .marks{display:none}
     </style>
     <script src="http://cdn.bootcss.com/jquery/1.8.2/jquery.min.js"></script>
 </head>
+
 <body>
     <div id="cricle">
         <div class="mask"></div>
-        <div class="left turn-1">
+        <div class="left">
+            <ul class="marks marks-left">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
             <div class="bg"></div>
         </div>
         <div class="right">
+            <ul class="marks marks-right">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
             <div class="bg"></div>
         </div>
         <div class="text"></div>
@@ -107,11 +178,21 @@
     <script type="text/javascript">
         // $(function(){
         //     $('.left').on('animationend',function(){
-        //         $(this).removeClass('turn-1').addClass('turn-2');
+        //         $(this).removeClass('turn-3.4').addClass('turn-2');
         //         $('.right').show();
         //         $('.mask').hide();
         //     });
         // });
+        $('.marks-right li').each(function(i,item){
+            var r = (i+1) * 9,
+                t = -3.4;
+            item.style.transform = 'rotate('+ r +'deg) translateY('+ t +'em)';
+        });
+        $('.marks-left li').each(function(i,item){
+            var r = -i * 9,
+                t = -3.4;
+            item.style.transform = 'rotate('+ r +'deg) translateY('+ t +'em)';
+        });
         var C = function(id) {
             this.box = $("#" + id);
             this.left = this.box.find(".left");
@@ -128,6 +209,9 @@
                 this.A = window.setInterval(function() {
                     T.change()
                 }, 80);
+                setTimeout(function(){
+                    $('.marks').show();
+                },4900);
             },
             change: function() {
                 var T = this;
